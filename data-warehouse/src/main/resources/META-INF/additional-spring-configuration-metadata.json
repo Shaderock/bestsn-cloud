@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "app.instance-id",
+      "type": "java.lang.String",
+      "description": "Description for app.instance-id."
+  }
+] }

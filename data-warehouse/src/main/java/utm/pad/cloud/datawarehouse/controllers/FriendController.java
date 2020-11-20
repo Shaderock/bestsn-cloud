@@ -1,6 +1,9 @@
 package utm.pad.cloud.datawarehouse.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import utm.pad.cloud.datawarehouse.exceptions.FriendAlreadyAddedException;
 import utm.pad.cloud.datawarehouse.exceptions.FriendDoesNotExistException;
 import utm.pad.cloud.datawarehouse.exceptions.UserNotFoundException;
@@ -9,13 +12,11 @@ import utm.pad.cloud.datawarehouse.models.responses.Response;
 import utm.pad.cloud.datawarehouse.models.responses.UsersResponse;
 import utm.pad.cloud.datawarehouse.services.interfaces.IUserService;
 import utm.pad.cloud.datawarehouse.utils.AuthenticationHelper;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/friends")
-public class FriendController extends XmlJsonController {
+@RequestMapping(value = "/friends", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+public class FriendController{
     private final IUserService userService;
 
     @GetMapping

@@ -1,20 +1,21 @@
 package utm.pad.cloud.datawarehouse.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 import utm.pad.cloud.datawarehouse.dtos.UserDTO;
 import utm.pad.cloud.datawarehouse.exceptions.UserNotFoundException;
 import utm.pad.cloud.datawarehouse.models.User;
 import utm.pad.cloud.datawarehouse.models.responses.UserResponse;
 import utm.pad.cloud.datawarehouse.services.interfaces.IUserService;
 import utm.pad.cloud.datawarehouse.utils.AuthenticationHelper;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/profile")
+@RequestMapping(value = "/profile", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 @RequiredArgsConstructor
-public class ProfileController extends XmlJsonController {
+public class ProfileController{
     private final IUserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
